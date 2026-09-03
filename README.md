@@ -1,5 +1,7 @@
 # AI Science: PLAsTiCC
 
+Repository: <https://github.com/kmenou/ai-science-plasticc>
+
 This small public course repository uses the PLAsTiCC astronomical time-series
 data to practise scientific Python, coding-agent collaboration, visual
 inspection, local verification, and pull-request review.
@@ -37,4 +39,3 @@ The PLAsTiCC data retain their Creative Commons Attribution 4.0 International
 license; see [data/README.md](data/README.md) for attribution and provenance.
 
 No GitHub Actions or other CI are used. Verification is deliberately local.
-
