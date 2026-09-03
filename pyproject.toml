@@ -1,0 +1,20 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "plasticc-course"
+version = "0.1.0"
+description = "Minimal teaching repository for the PLAsTiCC data challenge"
+requires-python = ">=3.11,<3.15"
+dependencies = [
+  "matplotlib>=3.9,<4",
+  "numpy>=2,<3",
+  "pandas>=2.2,<4",
+  "pyarrow>=17,<23",
+  "pytest>=8,<10",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/plasticc_course"]
+

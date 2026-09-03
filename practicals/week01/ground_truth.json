@@ -1,0 +1,81 @@
+{
+  "tiny_files": {
+    "plasticc_tiny300_metadata.parquet": {
+      "sha256": "af7f69f4d3d51c99d25f4f8d0b4433f0a3c7d1746c8984bf1f74a1b57bacaf9f"
+    },
+    "plasticc_tiny300_observations.parquet": {
+      "sha256": "f20e9282c7ee669ce8f65d7a4229fe77ee23c8a49cd2bee0db3013d64fe1b70f"
+    }
+  },
+  "summary": {
+    "metadata_rows": {
+      "value": 300,
+      "description": "len(metadata) for the tiny metadata table."
+    },
+    "observation_rows": {
+      "value": 52763,
+      "description": "len(observations) for the tiny observations table."
+    },
+    "unique_objects": {
+      "value": 300,
+      "description": "metadata['object_id'].nunique() from the tiny metadata table, not observations."
+    },
+    "passbands": {
+      "value": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "description": "Sorted unique integer values in observations['passband']."
+    },
+    "target_classes": {
+      "value": [
+        6,
+        15,
+        16,
+        42,
+        52,
+        53,
+        62,
+        64,
+        65,
+        67,
+        88,
+        90,
+        92,
+        95
+      ],
+      "description": "Sorted unique integer values in metadata['target']."
+    },
+    "detected_fraction": {
+      "value": 0.2337243901976764,
+      "description": "Rows with detected == 1 divided by all observation rows; no rows are dropped."
+    },
+    "negative_flux_fraction": {
+      "value": 0.4450088129939541,
+      "description": "Rows with flux < 0, strictly, divided by all observation rows; zero is not negative and no rows are dropped."
+    }
+  },
+  "anchor_object": {
+    "object_id": 252646,
+    "target": 90,
+    "class_name": "SNIa",
+    "selection_criteria": "Within the completed tiny subset: target == 90, all six passbands; prefer at least 40 observations and 20 detected rows; then rank by detected rows descending, total rows descending, and object_id ascending.",
+    "observation_rows": 350,
+    "detected_rows": 108,
+    "passbands": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "thresholds_met": true,
+    "thresholds_missed": [],
+    "description": "Well-sampled target-90 Type Ia supernova selected by the documented anchor rule."
+  }
+}

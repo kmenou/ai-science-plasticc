@@ -1,0 +1,2 @@
+"""PLAsTiCC course package."""
+
