@@ -1,0 +1,13 @@
+,source_median,target_median,ratio,scenario
+n_obs,350.0,130.0,0.37142857142857144,"Survey depth: train deep-drilling, test wide-field"
+n_detected,39.0,8.0,0.20512820512820512,"Survey depth: train deep-drilling, test wide-field"
+flux_err_median,2.044003486633301,9.704290390014648,4.747687786970797,"Survey depth: train deep-drilling, test wide-field"
+detected_span,77.81880000000092,57.873399999996764,0.7436943257926887,"Survey depth: train deep-drilling, test wide-field"
+snr_max,65.55265808105469,29.611730575561523,0.4517243303688334,"Survey depth: train deep-drilling, test wide-field"
+hostgal_photoz,0.3645000010728836,0.3100000023841858,0.8504801137770086,"Survey depth: train deep-drilling, test wide-field"
+n_obs,135.0,140.0,1.037037037037037,"Redshift: train z < 0.4, test z >= 0.4"
+n_detected,11.0,12.0,1.0909090909090908,"Redshift: train z < 0.4, test z >= 0.4"
+flux_err_median,8.895248413085938,8.602842330932617,0.9671278340329251,"Redshift: train z < 0.4, test z >= 0.4"
+detected_span,66.97989999999845,50.400450000001,0.7524712637672222,"Redshift: train z < 0.4, test z >= 0.4"
+snr_max,39.71738052368164,23.84748649597168,0.6004294890936356,"Redshift: train z < 0.4, test z >= 0.4"
+hostgal_photoz,0.25099998712539673,0.5709999799728394,2.274900435303904,"Redshift: train z < 0.4, test z >= 0.4"

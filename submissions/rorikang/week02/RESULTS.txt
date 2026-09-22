@@ -1,0 +1,188 @@
+################ hw2_task1_classifier.py ################
+Reusing cached features from .cache/hw2_lightcurve_features.parquet
+Features: 75 columns (70 from photometry, 5 from metadata)
+Objects:  7,848 across 14 classes
+
+Train 4,708 | validation 1,570 | test 1,570 (test held back until the final evaluation)
+
+Early stopping chose 74 trees (cap was 3000).
+
+                         balanced_log_loss  log_loss  accuracy  macro_f1
+model (validation)                                                      
+Training-prior constant             3.1754    2.1761    0.2949    0.0325
+Uniform constant                    2.6391    2.6391    0.0191    0.0027
+LightGBM                            0.7479    0.6186    0.7873    0.7359
+
+Photometry only, no host metadata: balanced log loss 0.9627 versus 0.7479 with it - host redshift is doing real work.
+
+--- final test-set evaluation (one look, nothing tuned after) ---
+   balanced_log_loss: 0.6678
+            log_loss: 0.5769
+            accuracy: 0.8210
+            macro_f1: 0.7856
+  validation -> test change in balanced log loss: -0.0801
+
+Per-class test results:
+                  target  n_test  log_loss  recall  mean_probability
+SN Iax            52.000  36.000     2.666   0.139             0.158
+SN Ia-91bg        67.000  42.000     1.601   0.429             0.341
+SN Ibc            62.000  97.000     1.274   0.567             0.444
+SN II             42.000 239.000     1.012   0.611             0.488
+TDE               15.000  99.000     0.837   0.768             0.660
+SLSN-I            95.000  35.000     0.551   0.857             0.761
+SN Ia             90.000 463.000     0.498   0.886             0.687
+mu-lens single     6.000  30.000     0.343   0.900             0.868
+kilonova          64.000  20.000     0.186   1.000             0.849
+AGN               88.000  74.000     0.111   0.973             0.956
+Mira              53.000   6.000     0.097   1.000             0.916
+RR Lyrae          92.000  48.000     0.081   0.979             0.947
+M-dwarf           65.000 196.000     0.063   0.985             0.952
+eclipsing binary  16.000 185.000     0.028   0.995             0.976
+
+Wrote task1_classifier.png, task1_scores.csv, task1_per_class.csv, task1_feature_importance.csv to week02/
+
+################ hw2_task2_redshift.py ################
+Reusing cached features from .cache/hw2_lightcurve_features.parquet
+5,523 extragalactic objects; 2,325 Galactic objects dropped (their z = 0 is a sentinel, not a measurement)
+spearman(hostgal_photoz, distmod) = 0.999999; distmod scatter inside narrow photo-z bins 0.0074 mag against 2.263 mag overall.
+distmod is therefore excluded: it is photo-z re-expressed in magnitudes, not independent information.
+
+Train 3,313 | validation 1,105 | test 1,105
+
+Hybrid disagreement threshold chosen on validation: 0.020 (validation outlier fraction 0.0371)
+
+                                                          bias  sigma_nmad  outlier_frac   rmse    mad         n
+model (validation)                                                                                              
+Photo-z as-is (baseline)                                0.0045      0.0277        0.1068 0.5180 0.0250 1105.0000
+LightGBM, photo-z only                                  0.0033      0.0557        0.0923 0.2104 0.0492 1105.0000
+LightGBM, photo-z + light curves                        0.0008      0.0340        0.0371 0.1381 0.0310 1105.0000
+LightGBM on residual, photo-z + light curves           -0.0014      0.0355        0.0489 0.1380 0.0307 1105.0000
+Hybrid: photo-z, overwritten if model disagrees > 0.02  0.0013      0.0332        0.0371 0.1379 0.0300 1105.0000
+
+Chosen on validation by outlier fraction (subject to sigma_NMAD <= 0.0416), with ties inside one standard error (0.0057) broken on sigma_NMAD:
+  Hybrid: photo-z, overwritten if model disagrees > 0.02
+Trees kept: direct 224, residual 229, photo-z only 191
+
+--- final test-set evaluation (one look, nothing tuned after) ---
+                                                          bias  sigma_nmad  outlier_frac   rmse    mad         n
+model (test)                                                                                                    
+Photo-z as-is (baseline)                                0.0052      0.0278        0.1222 0.5645 0.0230 1105.0000
+LightGBM, photo-z only                                  0.0034      0.0506        0.0977 0.2326 0.0440 1105.0000
+LightGBM, photo-z + light curves                        0.0013      0.0347        0.0380 0.1463 0.0297 1105.0000
+LightGBM on residual, photo-z + light curves           -0.0025      0.0330        0.0480 0.1384 0.0287 1105.0000
+Hybrid: photo-z, overwritten if model disagrees > 0.02  0.0025      0.0316        0.0389 0.1461 0.0270 1105.0000
+
+Chosen model against the photo-z baseline on the test set (positive = the model reduced the number, which is better for all three):
+  outlier fraction  0.1222 -> 0.0389  (+68.1%)
+  sigma_NMAD      0.0278 -> 0.0316  (-13.6%)
+  RMSE            0.5645 -> 0.1461  (+74.1%)
+
+Of 135 photo-z catastrophic failures in the test set, 104 are recovered.
+The model introduces 12 new failures on objects the photo-z had right.
+
+Top features (direct model): hostgal_photoz, hostgal_photoz_err, rise_time, flux_weighted_duration, fall_time, detected_span
+
+Wrote task2_redshift.png, task2_metrics.csv, task2_feature_importance.csv to week02/
+
+################ hw2_task3_outliers.py ################
+Objects inspected (most-detected deep-drilling object per class):
+      171194  SN Ia             z_spec 0.050
+      335507  SLSN-I            z_spec 0.469
+      186060  AGN               z_spec 0.601
+       28391  RR Lyrae          z_spec 0.000
+      151356  eclipsing binary  z_spec 0.000
+       24903  M-dwarf           z_spec 0.000
+
+                      class  n_obs  A_smooth_residual  B_detection_snr  C_large_error  any_flag  flagged_percent  median_bandwidth_days
+object_id                                                                                                                              
+171194                SN Ia    352                 24                0              8        25             7.10                   8.31
+335507               SLSN-I    350                  7               15              0        22             6.29                   5.28
+186060                  AGN    352                  5                0              0         5             1.42                   7.15
+28391              RR Lyrae    352                 25                1              0        26             7.39                   2.48
+151356     eclipsing binary    350                 46                2              0        47            13.43                   1.16
+24903               M-dwarf    350                 15                0              0        15             4.29                   9.67
+
+Detector A, the two local models compared.
+`abs_pull_steep` is the median |flux - fit| / flux_err over the steepest
+decile of each light curve - the stretches where a locally-constant fit is
+biased. `abs_pull_flat` is the same over the flattest half, where neither
+model should be biased.
+                      class  flags_kernel_average  flags_local_line  abs_pull_steep_kernel_average  abs_pull_flat_kernel_average  abs_pull_steep_local_line  abs_pull_flat_local_line
+object_id                                                                                                                                                                            
+171194                SN Ia                    21                24                          28.10                          0.65                      15.33                      0.66
+335507               SLSN-I                    11                 7                           8.52                          0.83                       2.78                      0.80
+186060                  AGN                     1                 5                           3.28                          1.93                       3.60                      1.51
+28391              RR Lyrae                     7                25                          68.43                        113.68                      70.02                     61.44
+151356     eclipsing binary                    40                46                          50.92                          0.57                      69.23                      0.64
+24903               M-dwarf                    13                15                           5.71                          0.65                       5.00                      0.66
+
+140 flagged observations in total across 6 objects.
+Bandwidth chosen per band varies from 1.2 to 9.7 days across these objects - one fixed smoothing scale would not have worked.
+
+Wrote task3_outliers.png, task3_outliers_zoom.png, task3_summary.csv, task3_flagged_observations.csv, task3_local_model_comparison.csv to week02/
+
+################ hw2_task4_shift.py ################
+Reusing cached features from .cache/hw2_lightcurve_features.parquet
+
+What differs between the domains - survey depth:
+                                                    source_median  target_median  ratio
+Survey depth: train deep-drilling, test wide-field                                     
+n_obs                                                     350.000        130.000  0.371
+n_detected                                                 39.000          8.000  0.205
+flux_err_median                                             2.044          9.704  4.748
+detected_span                                              77.819         57.873  0.744
+snr_max                                                    65.553         29.612  0.452
+hostgal_photoz                                              0.365          0.310  0.850
+
+=== Survey depth: train deep-drilling, test wide-field ===
+  shifted training set 1,576 (source domain only)
+  control training set 1,576 (random, same size, contains target-domain objects)
+  shared test set      1,974 (target domain)
+
+                                                                                bias  sigma_nmad  outlier_frac   rmse    mad         n
+Survey depth: train deep-drilling, test wide-field (test set = target domain)                                                         
+Photo-z as-is (baseline)                                                      0.0048      0.0270        0.1185 0.5805 0.0230 1974.0000
+LightGBM direct [shifted training]                                            0.0885      0.0684        0.2503 0.2287 0.1170 1974.0000
+LightGBM on residual [shifted training]                                       0.0519      0.0534        0.1484 0.2198 0.0723 1974.0000
+LightGBM direct [control training]                                            0.0062      0.0374        0.0461 0.1396 0.0324 1974.0000
+LightGBM on residual [control training]                                       0.0006      0.0386        0.0694 0.1605 0.0341 1974.0000
+  LightGBM direct: outlier fraction 0.0461 in-domain -> 0.2503 shifted (+0.2042 from the shift alone; the photo-z baseline sits at 0.1185 on the same objects).
+  LightGBM on residual: outlier fraction 0.0694 in-domain -> 0.1484 shifted (+0.0790 from the shift alone; the photo-z baseline sits at 0.1185 on the same objects).
+
+What differs between the domains - redshift:
+                                        source_median  target_median  ratio
+Redshift: train z < 0.4, test z >= 0.4                                     
+n_obs                                         135.000        140.000  1.037
+n_detected                                     11.000         12.000  1.091
+flux_err_median                                 8.895          8.603  0.967
+detected_span                                  66.980         50.400  0.752
+snr_max                                        39.717         23.847  0.600
+hostgal_photoz                                  0.251          0.571  2.275
+
+=== Redshift: train z < 0.4, test z >= 0.4 ===
+  shifted training set 3,973 (source domain only)
+  control training set 3,973 (random, same size, contains target-domain objects)
+  shared test set      775 (target domain)
+
+                                                                     bias  sigma_nmad  outlier_frac   rmse    mad        n
+Redshift: train z < 0.4, test z >= 0.4 (test set = target domain)                                                         
+Photo-z as-is (baseline)                                          -0.0019      0.0292        0.0465 0.2551 0.0320 775.0000
+LightGBM direct [shifted training]                                -0.1696      0.1505        0.5574 0.6770 0.2634 775.0000
+LightGBM on residual [shifted training]                           -0.1683      0.1655        0.5626 0.6689 0.2604 775.0000
+LightGBM direct [control training]                                -0.0296      0.0519        0.1110 0.2619 0.0677 775.0000
+LightGBM on residual [control training]                           -0.0234      0.0460        0.0890 0.2725 0.0566 775.0000
+  LightGBM direct: outlier fraction 0.1110 in-domain -> 0.5574 shifted (+0.4465 from the shift alone; the photo-z baseline sits at 0.0465 on the same objects).
+  LightGBM on residual: outlier fraction 0.0890 in-domain -> 0.5626 shifted (+0.4735 from the shift alone; the photo-z baseline sits at 0.0465 on the same objects).
+
+Why the redshift shift is worse than a plain extrapolation problem.
+  Among objects with photo-z > 0.5, the correction (z_spec - z_photo) they need is
+      525 training objects (z_spec < 0.4): median -1.949
+     1005 test objects (z_spec >= 0.4): median -0.006
+  Cutting the training set on the target variable means every high-photo-z
+  training object is a photo-z overestimate. The model learns to subtract
+  roughly 2 from a high photo-z, and that is precisely wrong for the test
+  domain, where a high photo-z is simply correct. This is why the residual
+  parameterisation rescues the depth shift but not this one.
+
+Wrote task4_distribution_shift.png, task4_shift_metrics.csv, task4_domain_differences.csv to week02/
+
