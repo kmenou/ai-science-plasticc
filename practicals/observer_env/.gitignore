@@ -1,0 +1,5 @@
+runs/
+report*.html
+report*.csv
+__pycache__/
+.pytest_cache/

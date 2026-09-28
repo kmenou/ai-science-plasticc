@@ -1,0 +1,30 @@
+{"task_id": "eval-000", "target": "T-a2f2", "object_id": 79579981, "true_class": 95, "class_name": "SLSN-I", "truth": "no", "peak_mjd_r": null}
+{"task_id": "eval-001", "target": "T-1b01", "object_id": 58635449, "true_class": 90, "class_name": "SN Ia", "truth": "yes", "peak_mjd_r": null}
+{"task_id": "eval-002", "target": "T-8293", "object_id": 245974, "true_class": 90, "class_name": "SN Ia", "truth": 59854.0225, "peak_mjd_r": 59854.0225}
+{"task_id": "eval-003", "target": "T-a10d", "object_id": 25736324, "true_class": 42, "class_name": "SN II", "truth": "no", "peak_mjd_r": null}
+{"task_id": "eval-004", "target": "T-c394", "object_id": 127717993, "true_class": 95, "class_name": "SLSN-I", "truth": 60531.1503, "peak_mjd_r": 60531.1503}
+{"task_id": "eval-005", "target": "T-ed5a", "object_id": 44537206, "true_class": 62, "class_name": "SN Ibc", "truth": 60647.0945, "peak_mjd_r": 60647.0945}
+{"task_id": "eval-006", "target": "T-68ea", "object_id": 201454, "true_class": 90, "class_name": "SN Ia", "truth": 60195.2343, "peak_mjd_r": 60195.2343}
+{"task_id": "eval-007", "target": "T-70bc", "object_id": 226891, "true_class": 90, "class_name": "SN Ia", "truth": "yes", "peak_mjd_r": null}
+{"task_id": "eval-008", "target": "T-7965", "object_id": 33268391, "true_class": 52, "class_name": "SN Iax", "truth": "supernova", "peak_mjd_r": null}
+{"task_id": "eval-009", "target": "T-f460", "object_id": 177211, "true_class": 95, "class_name": "SLSN-I", "truth": 60535.1729, "peak_mjd_r": 60535.1729}
+{"task_id": "eval-010", "target": "T-321c", "object_id": 259644, "true_class": 42, "class_name": "SN II", "truth": 59864.0162, "peak_mjd_r": 59864.0162}
+{"task_id": "eval-011", "target": "T-7ff9", "object_id": 114745481, "true_class": 15, "class_name": "TDE", "truth": "rare_transient", "peak_mjd_r": null}
+{"task_id": "eval-012", "target": "T-0cc1", "object_id": 293658, "true_class": 90, "class_name": "SN Ia", "truth": 59991.115, "peak_mjd_r": 59991.115}
+{"task_id": "eval-013", "target": "T-6cdb", "object_id": 82695182, "true_class": 6, "class_name": "microlens", "truth": "galactic_variable", "peak_mjd_r": null}
+{"task_id": "eval-014", "target": "T-f200", "object_id": 46712934, "true_class": 92, "class_name": "RR Lyrae", "truth": "galactic_variable", "peak_mjd_r": null}
+{"task_id": "eval-015", "target": "T-9ec6", "object_id": 59183655, "true_class": 15, "class_name": "TDE", "truth": "rare_transient", "peak_mjd_r": null}
+{"task_id": "eval-016", "target": "T-5980", "object_id": 82943308, "true_class": 16, "class_name": "eclipsing binary", "truth": "no", "peak_mjd_r": 60614.1718}
+{"task_id": "eval-017", "target": "T-febe", "object_id": 228629, "true_class": 42, "class_name": "SN II", "truth": 60520.4204, "peak_mjd_r": 60520.4204}
+{"task_id": "eval-018", "target": "T-9a8f", "object_id": 79538238, "true_class": 15, "class_name": "TDE", "truth": "no", "peak_mjd_r": null}
+{"task_id": "eval-019", "target": "T-f2ed", "object_id": 82344884, "true_class": 95, "class_name": "SLSN-I", "truth": "supernova", "peak_mjd_r": 60462.3476}
+{"task_id": "eval-020", "target": "T-042e", "object_id": 181046, "true_class": 90, "class_name": "SN Ia", "truth": 59957.2886, "peak_mjd_r": 59957.2886}
+{"task_id": "eval-021", "target": "T-75c5", "object_id": 59262634, "true_class": 88, "class_name": "AGN", "truth": "agn", "peak_mjd_r": 60206.2994}
+{"task_id": "eval-022", "target": "T-d5bf", "object_id": 125234535, "true_class": 42, "class_name": "SN II", "truth": "no", "peak_mjd_r": null}
+{"task_id": "eval-023", "target": "T-c1fa", "object_id": 23093844, "true_class": 95, "class_name": "SLSN-I", "truth": "supernova", "peak_mjd_r": null}
+{"task_id": "eval-024", "target": "T-6851", "object_id": 46431646, "true_class": 88, "class_name": "AGN", "truth": "agn", "peak_mjd_r": null}
+{"task_id": "eval-025", "target": "T-7f57", "object_id": 100939342, "true_class": 92, "class_name": "RR Lyrae", "truth": "galactic_variable", "peak_mjd_r": 59938.2226}
+{"task_id": "eval-026", "target": "T-6b94", "object_id": 337148, "true_class": 90, "class_name": "SN Ia", "truth": "yes", "peak_mjd_r": 59782.2372}
+{"task_id": "eval-027", "target": "T-8781", "object_id": 33370936, "true_class": 90, "class_name": "SN Ia", "truth": "yes", "peak_mjd_r": null}
+{"task_id": "eval-028", "target": "T-3af1", "object_id": 122093078, "true_class": 42, "class_name": "SN II", "truth": 59791.3068, "peak_mjd_r": 59791.3068}
+{"task_id": "eval-029", "target": "T-c929", "object_id": 36346404, "true_class": 90, "class_name": "SN Ia", "truth": "yes", "peak_mjd_r": null}
