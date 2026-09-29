@@ -1,0 +1,12 @@
+{"task_id": "dev-000", "target": "T-8a9d", "object_id": 165985, "true_class": 88, "class_name": "AGN", "truth": "agn", "peak_mjd_r": 60635.0469}
+{"task_id": "dev-001", "target": "T-1495", "object_id": 68328912, "true_class": 90, "class_name": "SN Ia", "truth": 60520.1864, "peak_mjd_r": 60520.1864}
+{"task_id": "dev-002", "target": "T-4cb9", "object_id": 81456459, "true_class": 64, "class_name": "kilonova", "truth": "rare_transient", "peak_mjd_r": null}
+{"task_id": "dev-003", "target": "T-7b26", "object_id": 8351755, "true_class": 62, "class_name": "SN Ibc", "truth": "no", "peak_mjd_r": null}
+{"task_id": "dev-004", "target": "T-6c35", "object_id": 94896507, "true_class": 16, "class_name": "eclipsing binary", "truth": "galactic_variable", "peak_mjd_r": null}
+{"task_id": "dev-005", "target": "T-673a", "object_id": 43035908, "true_class": 90, "class_name": "SN Ia", "truth": "yes", "peak_mjd_r": null}
+{"task_id": "dev-006", "target": "T-073f", "object_id": 19065476, "true_class": 6, "class_name": "microlens", "truth": "no", "peak_mjd_r": null}
+{"task_id": "dev-007", "target": "T-015e", "object_id": 128466146, "true_class": 52, "class_name": "SN Iax", "truth": 60611.2344, "peak_mjd_r": 60611.2344}
+{"task_id": "dev-008", "target": "T-1fd1", "object_id": 2123138, "true_class": 90, "class_name": "SN Ia", "truth": 59809.2257, "peak_mjd_r": 59809.2257}
+{"task_id": "dev-009", "target": "T-021e", "object_id": 292839, "true_class": 90, "class_name": "SN Ia", "truth": 60237.2675, "peak_mjd_r": 60237.2675}
+{"task_id": "dev-010", "target": "T-abae", "object_id": 102999753, "true_class": 90, "class_name": "SN Ia", "truth": "yes", "peak_mjd_r": null}
+{"task_id": "dev-011", "target": "T-868e", "object_id": 121577984, "true_class": 62, "class_name": "SN Ibc", "truth": "supernova", "peak_mjd_r": 60111.101}

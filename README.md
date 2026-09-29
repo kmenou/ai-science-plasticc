@@ -32,6 +32,10 @@ python scripts/preflight.py
 Start with [the Week 1 practical](practicals/week01/README.md). All student work
 belongs under `submissions/<student-or-pair-slug>/week01/`.
 
+The [observer environment](practicals/observer_env/README.md) is a practical on
+evaluating an AI agent: Claude buys telescope time under a budget to answer
+questions about PLAsTiCC objects, and you grade both its answers and its process.
+
 ## Data and licenses
 
 The original code and teaching materials are licensed under the MIT License.
